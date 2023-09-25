@@ -1,22 +1,34 @@
-# Define the Player class
-class Player:
-    def play(self):
-        print("The player is playing cricket.")
+# python program for linear search using for loop
 
-# Define the Batsman class, derived from Player
-class Batsman(Player):
-    def play(self):
-        print("The batsman is batting.")
+#define list
+lst = []
 
-# Define the Bowler class, derived from Player
-class Bowler(Player):
-    def play(self):
-        print("The bowler is bowling.")
+#take input list size
+num = int(input("Enter size of list :- "))
 
-# Create objects of Batsman and Bowler classes
-batsman = Batsman()
-bowler = Bowler()
+for n in range(num):
+  #append element in list/array
+  numbers = int(input("Enter the array of %d element :- " % n))
+  lst.append(numbers)
 
-# Call the play() method for each object
-batsman.play()
-bowler.play
+#take input number to be find in list
+x = int(input("Enter number to search in list :- "))
+
+
+# Recursive function to linear search x in arr[l..r]
+def recLinearSearch(arr, l, r, x):
+  if r < l:
+    return -1
+  if arr[l] == x:
+    return l
+  if arr[r] == x:
+    return r
+  return recLinearSearch(arr, l + 1, r - 1, x)
+
+
+res = recLinearSearch(lst, 0, len(lst) - 1, x)
+
+if res != -1:
+  print('{} was found at index {}.'.format(x, res))
+else:
+  print('{} was not found.'.format(x))
